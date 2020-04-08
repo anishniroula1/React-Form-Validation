@@ -1,0 +1,15 @@
+/node_modules
+
+/.idea
+.project
+.classpath
+.setting
+
+.vscode/*
+!.vscode/setting.json
+!.vscode/task.json
+!.vscode/launch.json
+!.vscode/extension.json
+
+.DS_Store
+Thumps.db
