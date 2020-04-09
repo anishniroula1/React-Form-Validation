@@ -1,0 +1,41 @@
+.dropdown-question {
+  &__label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: -10px;
+  }
+
+  &__error-label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: -10px;
+    color: red;
+  }
+
+  &__select {
+    width: 100%;
+    border: 4px solid rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    padding: 5px;
+    height: 45px;
+    background-color: #ffffff;
+    display: block;
+    font-size: 16px;
+  }
+
+  &__error-select {
+    width: 100%;
+    border: 3px solid red;
+    border-radius: 4px;
+    padding: 5px;
+    height: 45px;
+    background-color: #ffffff;
+    display: block;
+    font-size: 16px;
+  }
+
+
+  &__formGroup {
+    margin-bottom: 0.5em;
+  }
+}
