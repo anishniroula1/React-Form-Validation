@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import ValidationMessage from "../../common/validation-message/validation-message";
 import "./checkbox-question.scss"
 

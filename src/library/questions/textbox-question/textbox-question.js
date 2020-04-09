@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './textbox-question.scss'
 import ValidationMessage from "../../common/validation-message/validation-message";

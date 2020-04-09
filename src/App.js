@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
 import TextboxQuestion from "./library/questions/textbox-question/textbox-question";
 import validate, {userQuestions} from "./userQuestions";
@@ -18,7 +18,7 @@ const App = () => {
     const initialState = {email: 'Anishniroula1@gmail.com',
     phone: '1234567890'};
     // call the hook
-    const { handleSubmit, handleChange, handleBlur, values, errors, setValues } = useForm(validate, submitFunction, initialState);
+    const { handleSubmit, handleChange, handleBlur, values, errors } = useForm(validate, submitFunction, initialState);
         const question = userQuestions(values, errors);
     return (
         <form onSubmit={handleSubmit} noValidate className="App">
