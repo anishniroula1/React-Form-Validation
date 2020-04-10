@@ -89,3 +89,86 @@ export const userQuestions = (values, errors) => {
         },
 };
 ```
+
+## Error Service
+```
+
+export default function validate(values) {
+    let errors = {};
+    if (Validators.required(values.email)) {
+        errors.email = "Email is required";
+    } else if (Validators.email(values.email)) {
+        errors.email = "Please enter a valid email address";
+    }
+
+    if (Validators.required(values.password)) {
+        errors.password = "password is required";
+    } else if(Validators.password(values.password)) {
+        errors.password = "Please try Stronger Password"
+    }
+    if (Validators.required(values.accept)) {
+        errors.accept = "Please Check this Box";
+    }
+    if (Validators.required(values.phone)) {
+        errors.phone = "Please Enter your Phone Number";
+    }
+    if (Validators.phone(values.phone)) {
+        errors.phone = "Please Valid Phone Number";
+    }
+    if (Validators.required(values.date)) {
+        errors.date = "Please Enter the date";
+    }
+    if (!values.hello || Object.keys(values.hello).length === 0) {
+        errors.hello = "Please Choose More then one";
+    }
+    return errors;
+};
+```
+
+## Use in Component
+```
+return (
+        <form onSubmit={handleSubmit} noValidate className="App">
+            <FormErrorSummary errors={errors}/>
+            <TextboxQuestion
+                question={question.email}
+                onChange={handleChange}
+                onBlur={handleBlur}/>
+
+            <TextboxQuestion question={question.password}
+                             onChange={handleChange}
+                             onBlur={handleBlur}/>
+
+            <TextboxQuestion question={question.phone}
+                             onChange={handleChange}
+                             onBlur={handleBlur}/>
+
+            <TextboxQuestion question={question.date}
+                             onChange={handleChange}
+                             onBlur={handleBlur}/>
+
+            <DropdownQuestion question={question.countries}
+                      onChange={handleChange}
+                      onBlur={handleBlur}/>
+
+            <RadioButtonQuestion question={question.country}
+                      onChange={handleChange}
+                      onBlur={handleBlur}/>
+
+             <CheckboxGroupQuestion
+                 question={question.sport}
+                 onChange={handleChange}
+                 onBlur={handleBlur}/>
+
+             <SelectGroupQuestion
+                 question={question.hello}
+                 onChange={handleChange}
+                 onBlur={handleBlur}/>
+
+            <CheckboxQuestion question={question.accept}
+                              onChange={handleChange}
+                              onBlur={handleBlur}/>
+            <Button/>
+        </form>
+
+```
