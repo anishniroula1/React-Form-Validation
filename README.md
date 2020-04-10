@@ -2,9 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
-
-### `yarn start`
+### `npm start`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -12,57 +10,167 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `yarn test`
+### Make Different Question file
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## TextBox - By Default it will always be "text" but by passing type you can pass(password, tel, date):
+```
+  export const userQuestions = (values, errors) => {
+    return {
+        email: {
+            value: values.email, // values will come from component or props
+            key: 'email', // Key is always same as input name and this is required
+            label: 'What is your Username',
+            max: 45, // not required but if needed, this can be very helpful
+            min: 5,
+            error: errors.email // name of the error
+        },
+        password: {
+            value: values.password,
+            key: 'password',
+            label: 'What is your Password'
+            type: 'password', // this is how you pass type
+            error: errors.password
+        },
+        phone: {
+            value: values.phone,
+            key: 'phone',
+            label: 'What is your Phone Number',
+            type: 'tel', // type phone
+            max: 14,
+            error: errors.phone
+        },
+        date: {
+            value: values.date,
+            key: 'date',
+            label: 'What is Today Date',
+            type: 'date',
+            error: errors.date
+        },
+  }
+```
 
-### `yarn build`
+## Drowpdown, Radio Button, Group Checkbox, and Select All Checkbox
+```
+export const userQuestions = (values, errors) => {
+    return {
+        accept: { // single check box return true or false
+            value: values.accept,
+            key: 'accept',
+            label: 'Accept Term and Condition',
+            error: errors.accept
+        },
+        countries: { // single choice dropdown
+            value: values.countries,
+            key: 'countries',
+            label: 'These are the List of Country',
+            data: [
+                {value: 'India', label: 'India'},
+                {value: 'USA', label: 'USA'},
+                {value: 'UK', label: 'UK'},
+                {value: 'Germany', label: 'Germany'},
+                {value: 'Russia', label: 'Russia'},
+                {value: 'Italy', label: 'Italy'},
+            ],
+            error: errors.countries
+        },  
+    }
+};
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Single checkbox use for Term and condition or else
+```
+export const userQuestions = (values, errors) => {
+    return {
+        accept: { // single check box return true or false
+            value: values.accept,
+            key: 'accept',
+            label: 'Accept Term and Condition',
+            error: errors.accept
+        },
+};
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Error Service
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+export default function validate(values) {
+    let errors = {};
+    if (Validators.required(values.email)) {
+        errors.email = "Email is required";
+    } else if (Validators.email(values.email)) {
+        errors.email = "Please enter a valid email address";
+    }
 
-### `yarn eject`
+    if (Validators.required(values.password)) {
+        errors.password = "password is required";
+    } else if(Validators.password(values.password)) {
+        errors.password = "Please try Stronger Password"
+    }
+    if (Validators.required(values.accept)) {
+        errors.accept = "Please Check this Box";
+    }
+    if (Validators.required(values.phone)) {
+        errors.phone = "Please Enter your Phone Number";
+    }
+    if (Validators.phone(values.phone)) {
+        errors.phone = "Please Valid Phone Number";
+    }
+    if (Validators.required(values.date)) {
+        errors.date = "Please Enter the date";
+    }
+    if (!values.hello || Object.keys(values.hello).length === 0) {
+        errors.hello = "Please Choose More then one";
+    }
+    return errors;
+};
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Use in Component
+```
+const { handleSubmit, handleChange, handleBlur, values, errors } = useForm(validate, submitFunction, initialState);
+const question = userQuestions(values, errors);
+return (
+        <form onSubmit={handleSubmit} noValidate className="App">
+            <FormErrorSummary errors={errors}/>
+            <TextboxQuestion
+                question={question.email}
+                onChange={handleChange}
+                onBlur={handleBlur}/>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+            <TextboxQuestion question={question.password}
+                             onChange={handleChange}
+                             onBlur={handleBlur}/>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+            <TextboxQuestion question={question.phone}
+                             onChange={handleChange}
+                             onBlur={handleBlur}/>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+            <TextboxQuestion question={question.date}
+                             onChange={handleChange}
+                             onBlur={handleBlur}/>
 
-## Learn More
+            <DropdownQuestion question={question.countries}
+                      onChange={handleChange}
+                      onBlur={handleBlur}/>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+            <RadioButtonQuestion question={question.country}
+                      onChange={handleChange}
+                      onBlur={handleBlur}/>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+             <CheckboxGroupQuestion
+                 question={question.sport}
+                 onChange={handleChange}
+                 onBlur={handleBlur}/>
 
-### Code Splitting
+             <SelectGroupQuestion
+                 question={question.hello}
+                 onChange={handleChange}
+                 onBlur={handleBlur}/>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+            <CheckboxQuestion question={question.accept}
+                              onChange={handleChange}
+                              onBlur={handleBlur}/>
+            <Button/>
+        </form>
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
