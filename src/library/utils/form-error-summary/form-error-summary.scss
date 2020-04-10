@@ -1,3 +1,40 @@
+/*
+@import 'foundation';
+///Users/anishniroula/Documents/React/React-Form-Validation/node_modules/foundation-sites/scss/foundation.scss
+
+.warning {
+  @include flex-grid-row();
+  background-color: #FDF49A;
+  border-radius: .3em;
+  margin-bottom: 2em;
+  margin-top: 2em;
+
+  @include breakpoint(medium){}
+
+  &__image {
+    @include flex-grid-column(1);
+    background: url("warning.svg") no-repeat center;
+    width: rem-calc(20);
+    height: auto;
+    border-radius: 0.3em 0 0 0.3em;
+    background-color: #f7b500;
+
+    @include breakpoint(medium) {
+      @include flex-grid-column(shrink);
+      width: rem-calc(70);
+      height: auto;
+      border-radius: 0.3em 0 0 0.3em;
+      background-color: #f7b500;
+    }
+  }
+
+  &__content {
+    @include flex-grid-column();
+    font-size: 0.9375rem;
+    color: #394048;
+  }
+}*/
+
 .form-error-summary {
   &__overall {
     background: #89bd1052;

@@ -24,23 +24,26 @@ const TextboxQuestion = ({question, onChange, onBlur}) => {
 
 
     return (
-        <div className="textbox-question__formGroup">
-            {question.label && <label className={question.error ? "textbox-question__error-label" : "textbox-question__label"}>
-                {question.label}</label>}
-            <br/>
-            <input
-                className={question.error ? "textbox-question__error-input" : "textbox-question__input"}
-                name={question.key}
-                type={!question.type ? 'text' : question.type}
-                value={questionValue()}
-                onChange={onChange}
-                onBlur={onBlur}
-                maxLength={!!question.max ? question.max : ''}
-                minLength={!!question.min ? question.min : ''}
-                placeholder={placeHolder()}
-            />
-            {question.error && <ValidationMessage message={question.error}/>}
-        </div>
+            <div className="textbox-question__container">
+                <div className={question.error ? "textbox-question__error" : "textbox-question"}>
+                    <div className="textbox-question__items">
+                        <input
+                            name={question.key}
+                            type={!question.type ? 'text' : question.type}
+                            value={questionValue()}
+                            onChange={onChange}
+                            onBlur={onBlur}
+                            maxLength={!!question.max ? question.max : ''}
+                            minLength={!!question.min ? question.min : ''}
+                            placeholder={placeHolder()}
+                            className="textbox-question__field"/>
+                    </div>
+                    <span className={question.error ? "textbox-question__label-error" : "textbox-question__label"}>
+                        {question.label}
+                    </span>
+                </div>
+                {question.error && <ValidationMessage message={question.error}/>}
+            </div>
     )
 };
 

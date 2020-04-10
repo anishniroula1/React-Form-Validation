@@ -5,7 +5,7 @@ export const userQuestions = (values, errors) => {
         email: { // text box
             value: values.email,
             key: 'email',
-            label: 'What is your Username',
+            label: 'Username',
             /*max: 5,
             min: 5,*/
             error: errors.email
@@ -13,7 +13,7 @@ export const userQuestions = (values, errors) => {
         password: {
             value: values.password,
             key: 'password',
-            label: 'What is your Password',
+            label: 'Password',
             // max: 5,
             type: 'password',
             error: errors.password
@@ -21,7 +21,7 @@ export const userQuestions = (values, errors) => {
         phone: {
             value: values.phone,
             key: 'phone',
-            label: 'What is your Phone Number',
+            label: 'Phone Number',
             type: 'tel',
             max: 14,
             error: errors.phone
@@ -29,7 +29,7 @@ export const userQuestions = (values, errors) => {
         date: {
             value: values.date,
             key: 'date',
-            label: 'What is Today Date',
+            label: 'Today Date',
             type: 'date',
             error: errors.date
         },
@@ -42,7 +42,7 @@ export const userQuestions = (values, errors) => {
         countries: { // single choice dropdown
             value: values.countries,
             key: 'countries',
-            label: 'These are the List of Country',
+            label: 'Choose From List of Countries',
             data: [
                 {value: 'India', label: 'India'},
                 {value: 'USA', label: 'USA'},
@@ -56,7 +56,7 @@ export const userQuestions = (values, errors) => {
         country: { // Radio Button for single choices
             value: values.country,
             key: 'country',
-            label: 'These are the List of Country',
+            label: 'List of Countries',
             data: [
                 {value: 'India', label: 'India'},
                 {value: 'USA', label: 'USA'},
@@ -75,9 +75,9 @@ export const userQuestions = (values, errors) => {
                 {value: 'Soccer', label: 'Soccer'},
                 {value: 'Cricket', label: 'Cricket'},
                 {value: 'Football', label: 'FootBall'},
-                {value: 'Germany', label: 'Germany'},
-                {value: 'Russia', label: 'Russia'},
-                {value: 'Italy', label: 'Italy'},
+                {value: 'Hockey', label: 'Hockey'},
+                {value: 'Table Tennis', label: 'Table Tennis'},
+                {value: 'Boxing', label: 'Boxing'},
             ],
             error: errors.sport
         },
@@ -89,9 +89,9 @@ export const userQuestions = (values, errors) => {
                 {value: 'Soccer', label: 'Soccer'},
                 {value: 'Cricket', label: 'Cricket'},
                 {value: 'Football', label: 'FootBall'},
-                {value: 'Germany', label: 'Germany'},
-                {value: 'Russia', label: 'Russia'},
-                {value: 'Italy', label: 'Italy'},
+                {value: 'Hockey', label: 'Hockey'},
+                {value: 'Table Tennis', label: 'Table Tennis'},
+                {value: 'Boxing', label: 'Boxing'},
             ],
             error: errors.hello
         },

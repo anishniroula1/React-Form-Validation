@@ -16,4 +16,14 @@ export default function FormErrorSummary({errors}) {
         }
         </div>
     );
+    /*return (
+        <div className="warning">
+            <div className="warning__image"></div>
+            <div className="warning__content">
+                <p>
+                    Error has occured, please Check Below Field
+                </p>
+            </div>
+        </div>
+    )*/
 };
