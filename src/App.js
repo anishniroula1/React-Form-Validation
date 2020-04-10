@@ -3,12 +3,13 @@ import './App.css';
 import TextboxQuestion from "./library/questions/textbox-question/textbox-question";
 import validate, {userQuestions} from "./userQuestions";
 import useForm from "./library/utils/useForm";
-import FormErrorSummary from "./library/utils/form-error-summary";
+import FormErrorSummary from "./library/utils/form-error-summary/form-error-summary";
 import Button from "./library/button/Button";
 import CheckboxQuestion from "./library/questions/checkbox-question/checkbox-question";
 import DropdownQuestion from "./library/questions/dropdown-question/dropdown-question";
 import RadioButtonQuestion from "./library/questions/radionButton-question/radioButton-question";
 import CheckboxGroupQuestion from "./library/questions/checkbox-group-question/checkbox-group-question";
+import SelectGroupQuestion from "./library/questions/select-group-question/select-group-question";
 
 const App = () => {
     const submitFunction = async () => {
@@ -53,7 +54,7 @@ const App = () => {
                  onChange={handleChange}
                  onBlur={handleBlur}/>
 
-             <CheckboxGroupQuestion
+             <SelectGroupQuestion
                  question={question.hello}
                  onChange={handleChange}
                  onBlur={handleBlur}/>

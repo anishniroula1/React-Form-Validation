@@ -36,7 +36,9 @@ const useForm = (validate, runOnSubmit, initialState) => {
 
 
     const handleChange = (event) => {
-        if(event.checkboxGroup === true){
+        if(event.selectAll === true){
+            setValues(values => ({ ...values, [event.name]: event.value }));
+        }else if(event.checkboxGroup === true){
             setValues(values => ({ ...values, [event.name]: event.value }));
         }
         else if (event.checkbox === true) {
@@ -48,7 +50,12 @@ const useForm = (validate, runOnSubmit, initialState) => {
     };
 
     const handleBlur = (event) => {
-        if (!touched.includes(event.target.name)) {
+        if (event.selectAll === true && !touched.includes(event.name)) {
+            setTouched([
+                ...touched,
+                event.name
+            ])
+        }if (!touched.includes(!!event.target && event.target.name)) {
             setTouched([
                 ...touched,
                 event.target.name
