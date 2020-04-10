@@ -48,3 +48,44 @@ You will also see any lint errors in the console.
         },
   }
 ```
+
+## Drowpdown, Radio Button, Group Checkbox, and Select All Checkbox
+```
+export const userQuestions = (values, errors) => {
+    return {
+        accept: { // single check box return true or false
+            value: values.accept,
+            key: 'accept',
+            label: 'Accept Term and Condition',
+            error: errors.accept
+        },
+        countries: { // single choice dropdown
+            value: values.countries,
+            key: 'countries',
+            label: 'These are the List of Country',
+            data: [
+                {value: 'India', label: 'India'},
+                {value: 'USA', label: 'USA'},
+                {value: 'UK', label: 'UK'},
+                {value: 'Germany', label: 'Germany'},
+                {value: 'Russia', label: 'Russia'},
+                {value: 'Italy', label: 'Italy'},
+            ],
+            error: errors.countries
+        },  
+    }
+};
+```
+
+## Single checkbox use for Term and condition or else
+```
+export const userQuestions = (values, errors) => {
+    return {
+        accept: { // single check box return true or false
+            value: values.accept,
+            key: 'accept',
+            label: 'Accept Term and Condition',
+            error: errors.accept
+        },
+};
+```
