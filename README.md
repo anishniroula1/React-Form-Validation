@@ -12,8 +12,8 @@ You will also see any lint errors in the console.
 
 ### Make Different Question file
 
-#### TextBox - By Default it will always be "text" but by passing type you can pass(password, tel, date):
-<code>
+## TextBox - By Default it will always be "text" but by passing type you can pass(password, tel, date):
+```
   export const userQuestions = (values, errors) => {
     return {
         email: {
@@ -47,4 +47,4 @@ You will also see any lint errors in the console.
             error: errors.date
         },
   }
-</code>
+```
