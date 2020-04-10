@@ -20,7 +20,7 @@ const App = () => {
     phone: '1234567890'};
     // call the hook
     const { handleSubmit, handleChange, handleBlur, values, errors } = useForm(validate, submitFunction, initialState);
-        const question = userQuestions(values, errors);
+    const question = userQuestions(values, errors);
     return (
         <form onSubmit={handleSubmit} noValidate className="App">
             <FormErrorSummary errors={errors}/>
