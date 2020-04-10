@@ -127,6 +127,8 @@ export default function validate(values) {
 
 ## Use in Component
 ```
+const { handleSubmit, handleChange, handleBlur, values, errors } = useForm(validate, submitFunction, initialState);
+const question = userQuestions(values, errors);
 return (
         <form onSubmit={handleSubmit} noValidate className="App">
             <FormErrorSummary errors={errors}/>
