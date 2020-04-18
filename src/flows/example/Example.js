@@ -16,7 +16,7 @@ const Example = () => {
         console.log(values);
     };
 
-    const initialState = {email: 'Anishniroula1@gmail.com',
+    const initialState = {email: 'email@gmail.com',
     phone: '1234567890'};
     // call the hook
     const { handleSubmit, handleChange, handleBlur, values, errors } = useForm(validate, submitFunction, initialState);

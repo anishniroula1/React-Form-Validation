@@ -1,11 +1,11 @@
 import React, {Fragment} from 'react';
 import './App.scss';
-import SignUp from "./flows/sign-up/sign-up";
+import Example from "./flows/example/Example";
 
 const App = () => {
     return (
         <Fragment>
-            <SignUp/>
+            <Example/>
         </Fragment>
         );
 };
